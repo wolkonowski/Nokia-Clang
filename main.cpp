@@ -28,9 +28,9 @@ int main(int argc, char* argv[])
     }
     in.close();
     double H = 0;
-    for(auto it = mp.begin(); it != mp.end(); it++)
+    for(auto & it : mp)
     {
-        double t = it->second;
+        double t = it.second;
         H += t*log(t/counter)*(-1);
     }
     H /= counter;
@@ -53,12 +53,12 @@ int main(int argc, char* argv[])
     //mp[0]++;
     //mp[c]--;
     double H2 = 0;
-    for(auto it = mp2.begin();it != mp2.end(); it++)
+    for(auto & it : mp2)
     {
         double Hx = 0;
-        for (auto it2 = (it->second).begin(); it2 != (it->second).end(); it2++)
+        for (auto it2 = (it.second).begin(); it2 != (it.second).end(); it2++)
         {
-            double t = (double) (it2->second) / mp[it->first];
+            double t = (double) (it2->second) / mp[it.first];
             Hx += (it2->second)*log(t)*(-1);
         }
         if(isinf(Hx)) continue;
